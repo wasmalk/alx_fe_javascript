@@ -162,6 +162,29 @@ async function syncQuotes() {
             localQuotes.push(serverQuote); // Add new quotes from server
         }
     });
+    function createAddQuoteForm() {
+        const formContainer = document.createElement("div");
+    
+        const quoteInput = document.createElement("input");
+        quoteInput.id = "newQuoteText";
+        quoteInput.type = "text";
+        quoteInput.placeholder = "Enter a new quote";
+        formContainer.appendChild(quoteInput);
+    
+        const categoryInput = document.createElement("input");
+        categoryInput.id = "newQuoteCategory";
+        categoryInput.type = "text";
+        categoryInput.placeholder = "Enter quote category";
+        formContainer.appendChild(categoryInput);
+    
+        const addButton = document.createElement("button");
+        addButton.innerText = "Add Quote";
+        addButton.onclick = addQuote;
+        formContainer.appendChild(addButton);
+    
+        document.body.appendChild(formContainer); // Add form to the body or a specific container
+    }
+    
 
    // Save updated quotes to local storage
    localStorage.setItem('quotes', JSON.stringify(localQuotes));
