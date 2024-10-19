@@ -163,14 +163,16 @@ async function syncQuotes() {
         }
     });
 
-    // Save updated quotes to local storage
-    localStorage.setItem('quotes', JSON.stringify(localQuotes));
-    quotes = localQuotes; // Update the quotes array
+   // Save updated quotes to local storage
+   localStorage.setItem('quotes', JSON.stringify(localQuotes));
+   quotes = localQuotes; // Update the quotes array
 
-    // Notify users about the updates
-    alert("Quotes have been updated from the server!");
+   // Notify users about the updates
+   document.getElementById("quoteDisplay").innerHTML = "Quotes synced with server!";
+   setTimeout(() => {
+       document.getElementById("quoteDisplay").innerHTML = ''; // Clear message after a while
+   }, 3000);
 }
-
 // Set interval to sync quotes every 30 seconds
 setInterval(syncQuotes, 30000); // Adjust the interval as needed
 function checkForConflicts() {
