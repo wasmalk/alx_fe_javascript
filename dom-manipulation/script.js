@@ -194,3 +194,11 @@ function checkForConflicts() {
     // Save resolved quotes back to local storage
     localStorage.setItem('quotes', JSON.stringify(localQuotes));
 }
+// Initialize the application
+document.addEventListener("DOMContentLoaded", () => {
+    const lastSelectedCategory = localStorage.getItem('lastSelectedCategory');
+    if (lastSelectedCategory) {
+        document.getElementById("categoryFilter").value = lastSelectedCategory;
+        filterQuotes(); // Display quotes based on last selected category
+    }
+});
